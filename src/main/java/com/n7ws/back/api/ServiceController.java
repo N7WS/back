@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.n7ws.back.beans.Service;
+import com.n7ws.back.entities.Service;
 
 @RestController
 public class ServiceController {

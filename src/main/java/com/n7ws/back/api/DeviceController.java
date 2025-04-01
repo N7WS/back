@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.n7ws.back.beans.Device;
-import com.n7ws.back.beans.Status;
+import com.n7ws.back.entities.Device;
+import com.n7ws.back.entities.Status;
 
 @RestController
 public class DeviceController {

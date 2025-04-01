@@ -1,4 +1,4 @@
-package com.n7ws.back.beans;
+package com.n7ws.back.entities;
 
 public enum Status {
     ONLINE,

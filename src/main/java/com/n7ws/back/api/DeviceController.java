@@ -47,6 +47,8 @@ public class DeviceController {
 		devices.add(new DeviceDomain("iode", DeviceState.ONLINE, "c202", services, new ArrayList<>(), deviceConfigs));
 		devices.add(new DeviceDomain("argon", DeviceState.ONLINE, "c202", new ArrayList<>(), healthInfos, new ArrayList<>()));
 		devices.add(new DeviceDomain("albator", DeviceState.OFFLINE, "c203", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+		devices.add(new DeviceDomain("morpheus", DeviceState.ONLINE, "c202", new ArrayList<>(), new ArrayList<>(), deviceConfigs));
+		devices.add(new DeviceDomain("thesee", DeviceState.DISABLED, "c202", new ArrayList<>(), new ArrayList<>(), deviceConfigs));
 	}
 
 	@GetMapping

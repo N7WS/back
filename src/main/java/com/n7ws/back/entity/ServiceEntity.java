@@ -7,9 +7,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity @Data
+@Entity @Data @AllArgsConstructor @NoArgsConstructor
 public class ServiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

@@ -4,8 +4,8 @@ import com.n7ws.back.domain.ScriptDomain;
 import com.n7ws.back.entity.ScriptEntity;
 import com.n7ws.back.model.ScriptModel;
 
-public interface ScriptMapper {
-    static ScriptDomain toScriptDomain(ScriptEntity scriptEntity) {
+public interface ScriptMapper extends Mapper {
+    static ScriptDomain toDomain(ScriptEntity scriptEntity) {
         return new ScriptDomain(
             scriptEntity.getUid(),
             scriptEntity.getName(),
@@ -13,7 +13,7 @@ public interface ScriptMapper {
         );
     }
 
-    static ScriptModel toScriptModel(ScriptDomain scriptDomain) {
+    static ScriptModel toModel(ScriptDomain scriptDomain) {
         return new ScriptModel(
             scriptDomain.uid(),
             scriptDomain.name(),

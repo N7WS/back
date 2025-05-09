@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'war'
-	id 'org.springframework.boot' version '3.4.3'
+	id 'org.springframework.boot' version '3.4.5'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -12,6 +12,8 @@ java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
+
+	sourceSets.main.java.srcDirs = [ 'src/seed/java', 'src/main/java', 'src/utils/java' ]
 }
 
 repositories {
@@ -34,4 +36,16 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.register('seed', JavaExec) {
+    dependsOn classes
+    mainClass = "com.n7ws.back.SeedApplication"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+tasks.register('run', JavaExec) {
+    dependsOn classes
+    mainClass = "com.n7ws.back.BackApplication"
+    classpath = sourceSets.main.runtimeClasspath
 }

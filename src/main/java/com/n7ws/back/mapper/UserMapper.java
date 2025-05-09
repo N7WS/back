@@ -4,18 +4,18 @@ import com.n7ws.back.domain.UserDomain;
 import com.n7ws.back.entity.UserEntity;
 import com.n7ws.back.model.UserModel;
 
-public interface UserMapper {
-    static UserDomain toUserDomain(UserEntity userEntity) {
+public interface UserMapper extends Mapper {
+    static UserDomain toDomain(UserEntity userEntity) {
         return new UserDomain(
             userEntity.getUid(),
             userEntity.getLastname(),
             userEntity.getFirstname(),
             userEntity.getPassword(),
-            userEntity.isAdmin()
+            userEntity.getAdmin()
         );
     }
 
-    static UserModel toUserModel(UserDomain userDomain) {
+    static UserModel toModel(UserDomain userDomain) {
         return new UserModel(
             userDomain.uid(),
             userDomain.lastname(),

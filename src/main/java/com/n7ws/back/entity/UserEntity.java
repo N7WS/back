@@ -10,16 +10,23 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
-@Entity @Data @AllArgsConstructor @NoArgsConstructor
-public class UserEntity {
+@Entity @Data @AllArgsConstructor @RequiredArgsConstructor @NoArgsConstructor
+public class UserEntity implements com.n7ws.back.entity.Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String uid;
+    @NonNull
     private String lastname;
+    @NonNull
     private String firstname;
+    @NonNull
     private String password;
     @OneToMany
+    @NonNull
     private Collection<SessionEntity> sessions;
-    private boolean admin;
+    @NonNull
+    private Boolean admin;
 }

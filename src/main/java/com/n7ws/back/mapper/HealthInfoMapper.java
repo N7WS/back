@@ -4,8 +4,8 @@ import com.n7ws.back.domain.HealthInfoDomain;
 import com.n7ws.back.entity.HealthInfoEntity;
 import com.n7ws.back.model.HealthInfoModel;
 
-public interface HealthInfoMapper {
-    static HealthInfoDomain toHealthInfoDomain(HealthInfoEntity healthInfoEntity) {
+public interface HealthInfoMapper extends Mapper {
+    static HealthInfoDomain toDomain(HealthInfoEntity healthInfoEntity) {
         return new HealthInfoDomain(
             healthInfoEntity.getUid(),
             healthInfoEntity.getPing(),
@@ -14,7 +14,7 @@ public interface HealthInfoMapper {
         );
     }
 
-    static HealthInfoModel toHealthInfoModel(HealthInfoDomain healthInfoDomain) {
+    static HealthInfoModel toModel(HealthInfoDomain healthInfoDomain) {
         return new HealthInfoModel(
             healthInfoDomain.uid(),
             healthInfoDomain.ping(),

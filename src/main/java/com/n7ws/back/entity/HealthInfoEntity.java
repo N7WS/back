@@ -10,15 +10,21 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
-@Entity @Data @AllArgsConstructor @NoArgsConstructor
-public class HealthInfoEntity {
+@Entity @Data @AllArgsConstructor @RequiredArgsConstructor @NoArgsConstructor
+public class HealthInfoEntity implements com.n7ws.back.entity.Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String uid;
     @ManyToOne
+    @NonNull
     private DeviceEntity device;
+    @NonNull
     private Collection<Integer> ping;
+    @NonNull
     private Collection<Integer> ram;
+    @NonNull
     private Collection<Integer> cpu;
 }

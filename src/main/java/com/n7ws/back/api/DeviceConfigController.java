@@ -1,41 +1,41 @@
 package com.n7ws.back.api;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.n7ws.back.domain.DeviceConfigDomain;
 import com.n7ws.back.mapper.DeviceConfigMapper;
 import com.n7ws.back.model.DeviceConfigModel;
+import com.n7ws.back.repository.DeviceConfigRepository;
 
 
 @RestController
 @RequestMapping("/deviceConfigs")
 public class DeviceConfigController {
-	private Collection<DeviceConfigDomain> deviceConfigs;
 
-	public DeviceConfigController() {
-		deviceConfigs = new ArrayList<>();
-	}
+    @Autowired
+    DeviceConfigRepository repository;
 
 	@GetMapping
 	public Collection<DeviceConfigModel> deviceConfigs() {
-		return deviceConfigs.stream()
-			.map(deviceConfig -> DeviceConfigMapper.toDeviceConfigModel(deviceConfig))
+		return repository.findAll().stream()
+			.map(deviceConfig -> DeviceConfigMapper.toDomain(deviceConfig))
+			.map(deviceConfig -> DeviceConfigMapper.toModel(deviceConfig))
 			.collect(Collectors.toList());
 	}
 
 	@GetMapping("/{uid}")
 	public DeviceConfigModel deviceConfig(@PathVariable String uid) {
-		return deviceConfigs.stream()
+		return repository.findAll().stream()
+			.map(deviceConfig -> DeviceConfigMapper.toDomain(deviceConfig))
 			.filter(deviceConfig -> deviceConfig.uid().equals(uid))
 			.findFirst()
-			.map(deviceConfig -> DeviceConfigMapper.toDeviceConfigModel(deviceConfig))
+			.map(deviceConfig -> DeviceConfigMapper.toModel(deviceConfig))
 			.orElse(null);
 	}
 }

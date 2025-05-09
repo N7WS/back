@@ -4,8 +4,8 @@ import com.n7ws.back.domain.DeviceConfigDomain;
 import com.n7ws.back.entity.DeviceConfigEntity;
 import com.n7ws.back.model.DeviceConfigModel;
 
-public interface DeviceConfigMapper {
-    static DeviceConfigDomain toDeviceConfigDomain(DeviceConfigEntity deviceConfigEntity) {
+public interface DeviceConfigMapper extends Mapper {
+    static DeviceConfigDomain toDomain(DeviceConfigEntity deviceConfigEntity) {
         return new DeviceConfigDomain(
             deviceConfigEntity.getUid(),
             deviceConfigEntity.getCpuName(),
@@ -16,7 +16,7 @@ public interface DeviceConfigMapper {
         );
     }
 
-    static DeviceConfigModel toDeviceConfigModel(DeviceConfigDomain deviceConfigDomain) {
+    static DeviceConfigModel toModel(DeviceConfigDomain deviceConfigDomain) {
         return new DeviceConfigModel(
             deviceConfigDomain.uid(),
             deviceConfigDomain.cpuName(),

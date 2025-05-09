@@ -4,19 +4,19 @@ import com.n7ws.back.domain.SessionDomain;
 import com.n7ws.back.entity.SessionEntity;
 import com.n7ws.back.model.SessionModel;
 
-public interface SessionMapper {
-    static SessionDomain toSessionDomain(SessionEntity sessionEntity) {
+public interface SessionMapper extends Mapper {
+    static SessionDomain toDomain(SessionEntity sessionEntity) {
         return new SessionDomain(
             sessionEntity.getUid(),
-            UserMapper.toUserDomain(sessionEntity.getOwner()),
+            UserMapper.toDomain(sessionEntity.getOwner()),
             sessionEntity.getExpiration()
         );
     }
 
-    static SessionModel toSessionModel(SessionDomain sessionDomain) {
+    static SessionModel toModel(SessionDomain sessionDomain) {
         return new SessionModel(
             sessionDomain.uid(),
-            UserMapper.toUserModel(sessionDomain.owner()),
+            UserMapper.toModel(sessionDomain.owner()),
             sessionDomain.expiration()
         );
     }

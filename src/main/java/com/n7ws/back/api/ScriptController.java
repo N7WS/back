@@ -13,7 +13,15 @@ import com.n7ws.back.mapper.ScriptMapper;
 import com.n7ws.back.model.ScriptModel;
 import com.n7ws.back.repository.ScriptRepository;
 
-
+/**
+ * This class is a REST controller that handles HTTP requests related to scripts.
+ * It provides endpoints to retrieve all scripts and a specific script by its UID.
+ * Routes:
+ * - GET /scripts: Retrieve all scripts
+ * - GET /scripts/{uid}: Retrieve a specific script by its UID
+ *
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/scripts")
 public class ScriptController {

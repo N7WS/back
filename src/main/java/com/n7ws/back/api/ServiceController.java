@@ -13,7 +13,15 @@ import com.n7ws.back.mapper.ServiceMapper;
 import com.n7ws.back.model.ServiceModel;
 import com.n7ws.back.repository.ServiceRepository;
 
-
+/**
+ * This class is a REST controller that handles HTTP requests related to services.
+ * It provides endpoints to retrieve all services and a specific service by its UID.
+ * Routes:
+ * - GET /services: Retrieve all services
+ * - GET /services/{uid}: Retrieve a specific service by its UID
+ *
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/services")
 public class ServiceController {

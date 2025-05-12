@@ -13,7 +13,15 @@ import com.n7ws.back.mapper.UserMapper;
 import com.n7ws.back.model.UserModel;
 import com.n7ws.back.repository.UserRepository;
 
-
+/**
+ * This class is a REST controller that handles HTTP requests related to users.
+ * It provides endpoints to retrieve all users and a specific user by its UID.
+ * Routes:
+ * - GET /users: Retrieve all users
+ * - GET /users/{uid}: Retrieve a specific user by its UID
+ *
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/users")
 public class UserController {

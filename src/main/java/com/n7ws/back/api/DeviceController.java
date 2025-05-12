@@ -13,6 +13,15 @@ import com.n7ws.back.mapper.DeviceMapper;
 import com.n7ws.back.model.DeviceModel;
 import com.n7ws.back.repository.DeviceRepository;
 
+/**
+ * This class is a REST controller that handles HTTP requests related to devices.
+ * It provides endpoints to retrieve all devices and a specific device by its name.
+ * Routes:
+ * - GET /devices: Retrieve all devices
+ * - GET /devices/{name}: Retrieve a specific device by its name
+ *
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/devices")
 public class DeviceController {

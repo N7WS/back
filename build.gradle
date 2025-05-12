@@ -14,7 +14,11 @@ java {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
 
-	sourceSets.main.java.srcDirs = [ 'src/seed/java', 'src/main/java', 'src/utils/java' ]
+	sourceSets.main.java.srcDirs = [
+		'src/main/java',
+		'src/seed/java',
+		'src/utils/java'
+	]
 }
 
 repositories {
@@ -29,10 +33,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-	compileOnly("org.projectlombok:lombok:1.18.38")
-	annotationProcessor("org.projectlombok:lombok:1.18.38")
-	testCompileOnly("org.projectlombok:lombok:1.18.38")
-	testAnnotationProcessor("org.projectlombok:lombok:1.18.38")
+	compileOnly 'org.projectlombok:lombok:1.18.38'
+	annotationProcessor 'org.projectlombok:lombok:1.18.38'
+	testCompileOnly 'org.projectlombok:lombok:1.18.38'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.38'
 }
 
 classDiagrams {
@@ -59,4 +63,20 @@ tasks.register('run', JavaExec) {
     dependsOn classes
     mainClass = "com.n7ws.back.BackApplication"
     classpath = sourceSets.main.runtimeClasspath
+}
+
+tasks.register('doc', Javadoc) {
+    dependsOn classes
+    classpath = sourceSets.main.compileClasspath
+    source = fileTree(dir: 'src', include: '**/*.java', exclude: '**/test/**')
+    destinationDir = new File("./doc")
+    options.encoding = 'UTF-8'
+    options.memberLevel = JavadocMemberLevel.PUBLIC
+    // options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('charset', 'UTF-8')
+    options.links("https://docs.oracle.com/en/java/javase/21/docs/api/")
+	doFirst {
+        println "Generating documentation for files :"
+        source.files.each { println it }
+    }
 }

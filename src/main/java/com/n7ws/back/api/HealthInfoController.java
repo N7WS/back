@@ -13,7 +13,15 @@ import com.n7ws.back.mapper.HealthInfoMapper;
 import com.n7ws.back.model.HealthInfoModel;
 import com.n7ws.back.repository.HealthInfoRepository;
 
-
+/**
+ * This class is a REST controller that handles HTTP requests related to health information.
+ * It provides endpoints to retrieve all health information and a specific health information by its UID.
+ * Routes:
+ * - GET /healthInfos: Retrieve all health information
+ * - GET /healthInfos/{uid}: Retrieve a specific health information by its UID
+ *
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/healthInfos")
 public class HealthInfoController {

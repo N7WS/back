@@ -13,7 +13,15 @@ import com.n7ws.back.mapper.SessionMapper;
 import com.n7ws.back.model.SessionModel;
 import com.n7ws.back.repository.SessionRepository;
 
-
+/**
+ * This class is a REST controller that handles HTTP requests related to sessions.
+ * It provides endpoints to retrieve all sessions and a specific session by its UID.
+ * Routes:
+ * - GET /sessions: Retrieve all sessions
+ * - GET /sessions/{uid}: Retrieve a specific session by its UID
+ *
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/sessions")
 public class SessionController {

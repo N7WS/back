@@ -1,9 +1,9 @@
 package com.n7ws.back.domain;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record SessionDomain(
     String uid,
     UserDomain owner,
-    LocalDate expiration
+    LocalDateTime expiration
 ) {}

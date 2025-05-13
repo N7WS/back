@@ -6,12 +6,15 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.n7ws.back.mapper.SessionMapper;
 import com.n7ws.back.model.SessionModel;
 import com.n7ws.back.repository.SessionRepository;
+
 
 /**
  * This class is a REST controller that handles HTTP requests related to sessions.
@@ -46,4 +49,11 @@ public class SessionController {
 			.map(session -> SessionMapper.toModel(session))
 			.orElse(null);
 	}
+
+	@PostMapping("/")
+	public String postMethodName(@RequestBody String entity) {
+		
+		return entity;
+	}
+
 }

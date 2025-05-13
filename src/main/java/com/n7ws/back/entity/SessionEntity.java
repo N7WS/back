@@ -1,6 +1,6 @@
 package com.n7ws.back.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,5 +22,5 @@ public class SessionEntity implements com.n7ws.back.entity.Entity {
     @NonNull
     private UserEntity owner;
     @NonNull
-    private LocalDate expiration;
+    private LocalDateTime expiration;
 }

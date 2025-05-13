@@ -1,5 +1,6 @@
 package com.n7ws.back.mapper;
 
+import java.util.ArrayList;
 import com.n7ws.back.domain.UserDomain;
 import com.n7ws.back.entity.UserEntity;
 import com.n7ws.back.model.UserModel;
@@ -22,6 +23,17 @@ public interface UserMapper extends Mapper {
             userDomain.firstname(),
             userDomain.password(),
             userDomain.admin()
+        );
+    }
+
+    static UserEntity toEntity(UserModel userModel) {
+        return new UserEntity(
+            userModel.email(),
+            userModel.lastname(),
+            userModel.firstname(),
+            userModel.password(),
+            new ArrayList<>(), // TODO: A changer
+            userModel.admin()
         );
     }
 }

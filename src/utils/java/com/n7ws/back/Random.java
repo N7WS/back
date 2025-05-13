@@ -7,8 +7,8 @@ import java.nio.file.Paths;
 import com.n7ws.back.enums.DeviceState;
 
 public class Random {
-    private static final String ADJECTIVES_FILE = "/Users/theobessel/Documents/N7/2A/AppliWeb/N7WS/back/src/seed/resources/seeding/adjectives.txt";
-    private static final String ANIMAL_NAMES_FILE = "/Users/theobessel/Documents/N7/2A/AppliWeb/N7WS/back/src/seed/resources/seeding/animals.txt";
+    private static final String ADJECTIVES_FILE = "./src/seed/resources/seeding/adjectives.txt";
+    private static final String ANIMAL_NAMES_FILE = "./src/seed/resources/seeding/animals.txt";
 
     public static String randomName() {
         String[] adjectives;

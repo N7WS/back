@@ -4,11 +4,15 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.n7ws.back.entity.UserEntity;
 import com.n7ws.back.mapper.UserMapper;
 import com.n7ws.back.model.UserModel;
 import com.n7ws.back.repository.UserRepository;
@@ -23,6 +27,7 @@ import com.n7ws.back.repository.UserRepository;
  * @version 1.0
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/users")
 public class UserController {
 
@@ -45,5 +50,11 @@ public class UserController {
 			.findFirst()
 			.map(user -> UserMapper.toModel(user))
 			.orElse(null);
+	}
+
+	@PostMapping
+	public UserEntity createUser(@RequestBody UserModel user) {
+		UserEntity userEntity = UserMapper.toEntity(user);
+		return repository.save(userEntity);
 	}
 }

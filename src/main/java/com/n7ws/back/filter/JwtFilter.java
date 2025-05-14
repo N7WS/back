@@ -26,6 +26,9 @@ public class JwtFilter extends OncePerRequestFilter{
     private final JwtUtils jwtUtils;
 
     @Override
+    /** Filter ayant pour objectif de filter les requetes qui ont besoin d'authentication (routes privées) et les autres (routes publiques)
+     *  Objectif de ce filtre est de vérifier si le token JWT est valide et d'authentifier l'utilisateur dans le cadre d'une requête sur une route privée
+     *  */
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
 
@@ -33,6 +36,7 @@ public class JwtFilter extends OncePerRequestFilter{
         String jwt = null;
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            // Récupération du token JWT dans l'en-tête Authorization
             jwt = authHeader.substring(7); // Récupération du token après "Bearer "
             username = jwtUtils.extractUid(jwt);
         }
@@ -53,7 +57,7 @@ public class JwtFilter extends OncePerRequestFilter{
             }
         }
 
-        filterChain.doFilter(request, response); // On continue la chaîne de filtres
+        filterChain.doFilter(request, response); // On continue la chaîne de filtres si il y en a (pas notre cas ?)
 
     }
 }

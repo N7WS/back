@@ -26,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         // Vérification que l'on a bien trouvé un utilisateur
         if (user == null) {
-            throw new UsernameNotFoundException("User not found with username: " + username);
+            throw new UsernameNotFoundException("User not found with uid: " + username);
         }
 
         return new User(user.getUid(), user.getPassword(), 

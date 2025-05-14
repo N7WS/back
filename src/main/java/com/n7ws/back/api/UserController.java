@@ -27,6 +27,8 @@ import com.n7ws.back.mapper.UserMapper;
 import com.n7ws.back.model.UserModel;
 import com.n7ws.back.repository.UserRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * This class is a REST controller that handles HTTP requests related to users.
  * It provides endpoints to retrieve all users and a specific user by its UID.
@@ -37,16 +39,20 @@ import com.n7ws.back.repository.UserRepository;
  * @version 1.0
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired
     UserRepository repository;
 
-	private final PasswordEncoder passwordEncoder;
-	private final JwtUtils jwtUtils;
-	private final AuthenticationManager authentificationManager;
+	//private final ?
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	@Autowired
+	JwtUtils jwtUtils;
+	@Autowired
+	AuthenticationManager authentificationManager;
 
 
 	@GetMapping
@@ -67,9 +73,8 @@ public class UserController {
 			.orElse(null);
 	}
 
-	@PostMapping("/register")
-	public ResponseEntity<?> register(@RequestBody UserModel user) {
-		
+	@PostMapping
+	public ResponseEntity<?> register(@RequestBody UserModel user) {		
 		if (repository.findByUid(UserMapper.toEntity(user).getUid()) != null) {
 			return ResponseEntity.badRequest().body("Username already exists");
 		}

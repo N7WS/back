@@ -67,7 +67,7 @@ public class JwtUtils {
     } 
 
     /** Extraction de l'identifiant de l'utilisateur à partir du token */
-    private String extractUid(String token) {
+    public String extractUid(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 

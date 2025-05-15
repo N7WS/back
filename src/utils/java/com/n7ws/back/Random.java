@@ -40,4 +40,8 @@ public class Random {
     public static Integer randomPort(){
         return(int) (Math.random() * 10000) %1024 ;
     }
+
+    public static Boolean randomAdmin(){
+        return (Math.random() < 0.5);
+    }
 }

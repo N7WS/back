@@ -36,4 +36,8 @@ public class Random {
                floors[(int) (Math.random() * floors.length)] +
                rooms[(int) (Math.random() * rooms.length)];
     }
+
+    public static Integer randomPort(){
+        return(int) (Math.random() * 10000) %1024 ;
+    }
 }

@@ -27,8 +27,6 @@ import com.n7ws.back.mapper.UserMapper;
 import com.n7ws.back.model.UserModel;
 import com.n7ws.back.repository.UserRepository;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * This class is a REST controller that handles HTTP requests related to users.
  * It provides endpoints to retrieve all users and a specific user by its UID.
@@ -73,7 +71,7 @@ public class UserController {
 			.orElse(null);
 	}
 
-	@PostMapping
+	@PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody UserModel user) {		
 		if (repository.findByUid(UserMapper.toEntity(user).getUid()) != null) {
 			return ResponseEntity.badRequest().body("Username already exists");
@@ -87,8 +85,14 @@ public class UserController {
 
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody UserModel user) {
+
 		// User entity
-		UserEntity userEntity = UserMapper.toEntity(user);
+		UserEntity userEntity = repository.findByUid(user.email());
+
+		// On vérifie si l'utilisateur existe
+		if (userEntity == null) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email ou password");
+		}
 
 		try {
 			Authentication authentication = authentificationManager.authenticate(

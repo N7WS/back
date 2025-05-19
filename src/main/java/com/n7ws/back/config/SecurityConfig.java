@@ -32,7 +32,7 @@ public class SecurityConfig {
         // Désactiver la protection CSRF, autoriser les requestes sur les routes /users et demander authentification sur toutes les autres routes
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(req -> req.requestMatchers("/users").permitAll()
+                .authorizeHttpRequests(req -> req.requestMatchers("/users/**").permitAll()
                     .anyRequest().authenticated()).addFilterBefore(new JwtFilter(customUserDetailsService, jwtUtils), UsernamePasswordAuthenticationFilter.class)
                 .cors(c -> c.configurationSource(customCorsConfiguration));
         return httpSecurity.build();
